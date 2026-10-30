@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>STUDIVRA – Account Deletion and Support</title>
+<style>
+:root{--bg:#f6f2fb;--card:#fff;--ink:#1f2540;--muted:#566079;--line:#e2daf0;--lav:#8b73d6;--lav-d:#6a52b8;--lilac:#efe8fa;--cream:#fff9ef;--navy:#1f2a5a;--err:#b3261e;--errbg:#fdecea;--ok:#1d6b43;--btnink:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14152a;--card:#1d1f3a;--ink:#eceffa;--muted:#aab1cc;--line:#343760;--lav:#a28ff0;--lav-d:#b9a9ff;--lilac:#272a4d;--cream:#2a2740;--navy:#c9d0ff;--err:#ff9a92;--errbg:#3b1f27;--ok:#7fd8a8;--btnink:#14152a}}
+:root[data-theme="dark"]{--bg:#14152a;--card:#1d1f3a;--ink:#eceffa;--muted:#aab1cc;--line:#343760;--lav:#a28ff0;--lav-d:#b9a9ff;--lilac:#272a4d;--cream:#2a2740;--navy:#c9d0ff;--err:#ff9a92;--errbg:#3b1f27;--ok:#7fd8a8;--btnink:#14152a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+a{color:var(--lav-d);text-underline-offset:3px}
+:focus-visible{outline:3px solid var(--lav);outline-offset:2px}
+.wrap{max-width:780px;margin:0 auto;padding:0 18px 40px}
+.nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.12em;color:var(--navy);text-decoration:none;margin-right:auto}
+.logo i{width:38px;height:38px;border-radius:11px;background:var(--lilac);display:grid;place-items:center}
+.nav a.l{color:var(--ink);text-decoration:none;font-weight:600;padding:6px 2px;border-bottom:2px solid transparent}
+.nav a.l[aria-current="page"]{border-color:var(--lav-d);color:var(--lav-d)}
+header.h{text-align:center;padding:30px 0 6px}
+h1{font-size:1.7rem;margin:0 0 8px;color:var(--navy)}
+.tag{color:var(--lav-d);font-weight:600;margin:0 0 12px}
+.intro{max-width:620px;margin:0 auto;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;margin-top:22px;box-shadow:0 6px 24px rgba(31,42,90,.07)}
+h2{font-size:1.25rem;margin:0 0 8px;color:var(--navy)}
+p{margin:0 0 12px}
+label,legend{display:block;font-weight:600;margin-bottom:6px}
+.opt,.hint{color:var(--muted);font-weight:400}
+.hint{font-size:.88rem;margin-top:4px}
+.field{margin-bottom:18px}
+input[type=email],input[type=text],select,textarea{width:100%;padding:12px 14px;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px}
+textarea{min-height:170px;resize:vertical}
+[aria-invalid="true"]{border-color:var(--err)!important}
+.error{color:var(--err);font-size:.92rem;margin-top:6px;display:none}
+.error.show{display:block}
+.check{display:flex;gap:10px;align-items:flex-start}
+.check input{width:22px;height:22px;margin-top:3px;accent-color:var(--lav-d);flex:none}
+.check label{font-weight:400;margin:0}
+button,.btn{display:inline-block;font:inherit;font-weight:600;border:0;border-radius:12px;padding:13px 22px;cursor:pointer;background:var(--lav-d);color:var(--btnink);text-decoration:none;text-align:center}
+.btn.alt,button.alt{background:var(--lilac);color:var(--navy);border:1.5px solid var(--line)}
+button:disabled{opacity:.6;cursor:not-allowed}
+.note{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:12px 16px;font-size:.95rem}
+.warn{background:var(--errbg);color:var(--err);border-radius:10px;padding:10px 14px;font-size:.92rem;margin-bottom:12px}
+.summary{display:none;border:1.5px solid var(--lav);background:var(--lilac);border-radius:14px;padding:18px;margin-top:20px}
+.summary.show{display:block}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
+.preview{white-space:pre-wrap;word-break:break-word;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:.88rem;margin:10px 0}
+.status{min-height:1.3em;font-size:.92rem;color:var(--ok)}
+ul{margin:8px 0 12px;padding-left:22px}
+.steps{display:grid;gap:14px;grid-template-columns:repeat(3,1fr);margin:12px 0 0;padding:0;list-style:none}
+.steps li{background:var(--lilac);border-radius:14px;padding:16px}
+.num{width:32px;height:32px;border-radius:50%;background:var(--lav-d);color:var(--btnink);display:grid;place-items:center;font-weight:700;margin-bottom:8px}
+.steps h3{margin:0 0 6px;font-size:1rem;color:var(--navy)}
+.steps p{font-size:.92rem;color:var(--muted);margin:0}
+.view{display:none}.view.on{display:block}
+footer{text-align:center;margin-top:34px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.92rem}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 18px;justify-content:center;margin:8px 0}
+@media (max-width:640px){.steps{grid-template-columns:1fr}.card{padding:20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="nav" role="navigation" aria-label="Main">
+  <a class="logo" href="#" data-route="home"><i aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6a52b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5L2 9z"/><path d="M6 11.5V16c0 1.4 2.7 3 6 3s6-1.6 6-3v-4.5"/><path d="M22 9v6"/></svg></i>STUDIVRA</a>
+  <a class="l" href="#" data-route="home" data-nav="home">Account Deletion</a>
+  <a class="l" href="#contact-support" data-route="contact-support" data-nav="contact-support">Contact Support</a>
+  <a class="l" href="https://sites.google.com/view/studivraprivacypolicy?usp=sharing" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+</div>
+
+<main id="main" tabindex="-1">
+
+<!-- HOME -->
+<section class="view" id="v-home">
+  <header class="h">
+    <h1>STUDIVRA Account and Data Deletion</h1>
+    <p class="tag">Understand. Practice. Remember.</p>
+    <p class="intro">Your privacy matters to us. If you no longer wish to use STUDIVRA, you can request deletion of your account and associated personal data using the instructions below. You do not need to reinstall the app to request deletion.</p>
+    <p style="margin-top:18px"><a class="btn" href="#request-deletion" data-route="request-deletion">Request Account Deletion</a></p>
+  </header>
+  <section class="card"><h2>Deletion Process</h2>
+    <ol class="steps">
+      <li><div class="num" aria-hidden="true">1</div><h3>Submit your request</h3><p>Enter the Google account email address associated with your STUDIVRA account and submit the request.</p></li>
+      <li><div class="num" aria-hidden="true">2</div><h3>Verify account ownership</h3><p>We may contact you to verify that you own the account before processing deletion.</p></li>
+      <li><div class="num" aria-hidden="true">3</div><h3>Deletion and confirmation</h3><p>After verification, we will process your deletion request and notify you when the process is complete.</p></li>
+    </ol>
+  </section>
+  <section class="card"><h2>What may be deleted</h2>
+    <p>Depending on what STUDIVRA actually stores, deletion may include:</p>
+    <ul><li>Account profile information.</li><li>Saved notes and learning materials.</li><li>Flashcards and quiz history.</li><li>Learning progress and study plans.</li><li>Associated uploaded files and other account-linked content.</li></ul>
+  </section>
+  <section class="card"><h2>Data retention</h2>
+    <p>Some information may be retained where required by applicable law or where a legitimate retention requirement applies. Any retained information is limited to the applicable purpose and retention period. Copies in backups or third-party systems may remain for a limited time.</p>
+    <p><a href="https://sites.google.com/view/studivraprivacypolicy?usp=sharing" target="_blank" rel="noopener noreferrer">Read STUDIVRA’s Privacy Policy</a></p>
+  </section>
+  <section class="card"><h2>Google Sign-In</h2>
+    <p>STUDIVRA uses Google Sign-In. We will never ask for your Google password, verification codes, or sign-in tokens. If you can’t access your account, <a href="#contact-support" data-route="contact-support">contact support</a> and we will help.</p>
+  </section>
+</section>
+
+<!-- DELETION FORM -->
+<section class="view" id="v-request-deletion">
+  <header class="h"><h1>Request Account Deletion</h1>
+    <p class="intro">If you created a STUDIVRA account using Google Sign-In and no longer wish to use the service, use this form to request deletion of your account and associated data.</p></header>
+  <section class="card">
+    <form id="df" novalidate>
+      <div class="field"><label for="d-email">Google account email address</label>
+        <input type="email" id="d-email" autocomplete="email" inputmode="email" required aria-describedby="d-email-e"><div class="hint">The Google account you used to sign in to STUDIVRA.</div><div class="error" id="d-email-e" role="alert"></div></div>
+      <div class="field"><label for="d-alt">Alternative contact email <span class="opt">(optional)</span></label>
+        <input type="email" id="d-alt" autocomplete="off" inputmode="email" aria-describedby="d-alt-e"><div class="error" id="d-alt-e" role="alert"></div></div>
+      <div class="field"><label for="d-reason">Reason for deletion <span class="opt">(optional)</span></label>
+        <select id="d-reason"><option value="">Select a reason</option><option>No longer need the app</option><option>Privacy concerns</option><option>Technical issues</option><option>Other</option></select></div>
+      <div class="field"><div class="check"><input type="checkbox" id="d-confirm" aria-describedby="d-confirm-e"><label for="d-confirm">I understand that account deletion may permanently remove my saved study materials and progress.</label></div><div class="error" id="d-confirm-e" role="alert"></div></div>
+      <p class="hint">Never send your Google password or verification codes.</p>
+      <button type="submit" id="d-submit">Submit Deletion Request</button>
+    </form>
+    <div class="summary" id="d-sum" tabindex="-1"></div>
+    <p style="margin-top:16px"><a href="https://sites.google.com/view/studivraprivacypolicy?usp=sharing" target="_blank" rel="noopener noreferrer">Read STUDIVRA’s Privacy Policy</a></p>
+  </section>
+</section>
+
+<!-- CONTACT -->
+<section class="view" id="v-contact-support">
+  <header class="h"><h1>Contact STUDIVRA Support</h1>
+    <p class="intro">Having a problem with STUDIVRA? Tell us what happened. Our support team will receive your message and can help you resolve your issue.</p></header>
+  <section class="card">
+    <form id="cf" novalidate>
+      <div class="field"><label for="c-name">Full name <span class="opt">(optional)</span></label><input type="text" id="c-name" autocomplete="name" maxlength="100"></div>
+      <div class="field"><label for="c-email">Email address</label><input type="email" id="c-email" autocomplete="email" inputmode="email" required aria-describedby="c-email-e"><div class="hint">So the support team can reply to you.</div><div class="error" id="c-email-e" role="alert"></div></div>
+      <div class="field"><label for="c-cat">Issue category</label>
+        <select id="c-cat" required aria-describedby="c-cat-e"><option value="">Select a category</option><option>Login and account access</option><option>Account deletion</option><option>AI Tutor</option><option>Study materials and document uploads</option><option>Flashcards and quizzes</option><option>App bugs or technical problems</option><option>Privacy and personal data</option><option>Suggestions and feedback</option><option>Other</option></select><div class="error" id="c-cat-e" role="alert"></div></div>
+      <div class="field"><label for="c-sub">Subject</label><input type="text" id="c-sub" maxlength="150" required aria-describedby="c-sub-e"><div class="error" id="c-sub-e" role="alert"></div></div>
+      <div class="field"><label for="c-msg">Describe your issue</label><textarea id="c-msg" maxlength="4000" required aria-describedby="c-msg-e"></textarea><div class="error" id="c-msg-e" role="alert"></div></div>
+      <p class="note">Please do not include your Google password, verification codes, or other sensitive authentication information in your message.</p>
+      <p style="margin-top:16px"><button type="submit" id="c-submit">Submit Message</button></p>
+    </form>
+    <div class="summary" id="c-sum" tabindex="-1"></div>
+    <p style="margin-top:16px">You can also email us directly: <a href="mailto:studivrasupport@gmail.com">studivrasupport@gmail.com</a><br><a href="https://sites.google.com/view/studivraprivacypolicy?usp=sharing" target="_blank" rel="noopener noreferrer">Read STUDIVRA’s Privacy Policy</a></p>
+  </section>
+</section>
+
+</main>
+
+<footer>
+  <strong>STUDIVRA</strong><br>Developed by SANVEX
+  <nav aria-label="Footer">
+    <a href="#" data-route="home">Account Deletion</a>
+    <a href="#contact-support" data-route="contact-support">Contact Support</a>
+    <a href="https://sites.google.com/view/studivraprivacypolicy?usp=sharing" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+  </nav>
+  <div><a href="mailto:studivrasupport@gmail.com">studivrasupport@gmail.com</a></div>
+  <div>© <span id="yr">2026</span> SANVEX</div>
+</footer>
+</div>
+
+<script>
+(function(){
+var SUPPORT="studivrasupport@gmail.com";
+var $=function(i){return document.getElementById(i)};
+var re=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+$("yr").textContent=new Date().getFullYear();
+
+/* routing */
+var routes={"home":1,"request-deletion":1,"contact-support":1};
+function show(r,push){
+  if(!routes[r])r="home";
+  ["home","request-deletion","contact-support"].forEach(function(k){$("v-"+k).classList.toggle("on",k===r)});
+  Array.prototype.forEach.call(document.querySelectorAll("[data-nav]"),function(a){
+    var n=a.getAttribute("data-nav"),active=(n===r)||(n==="home"&&r==="request-deletion");
+    if(active)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
+  });
+  document.title={"home":"STUDIVRA Account and Data Deletion","request-deletion":"Request Account Deletion – STUDIVRA","contact-support":"Contact STUDIVRA Support"}[r];
+  if(push){try{history.replaceState(null,"",r==="home"?"#":"#"+r)}catch(e){}}
+  window.scrollTo(0,0);
+}
+document.addEventListener("click",function(e){
+  var a=e.target.closest&&e.target.closest("[data-route]");
+  if(!a)return;e.preventDefault();show(a.getAttribute("data-route"),true);
+});
+window.addEventListener("hashchange",function(){show(location.hash.replace("#",""))});
+show(location.hash.replace("#",""));
+
+/* helpers */
+function setErr(id,msg){var i=$(id),e=$(id+"-e");if(!e)return;
+  if(msg){e.textContent=msg;e.classList.add("show");i.setAttribute("aria-invalid","true")}else{e.textContent="";e.classList.remove("show");i.removeAttribute("aria-invalid")}}
+function one(s){return s.replace(/[\r\n]+/g," ").trim()}
+function copyText(t,st){
+  function ok(){st.textContent="Copied. Paste it into an email to "+SUPPORT+" and send it."}
+  function fb(){var ta=document.createElement("textarea");ta.value=t;ta.style.cssText="position:fixed;opacity:0";document.body.appendChild(ta);ta.select();
+    try{document.execCommand("copy")?ok():st.textContent="Couldn’t copy automatically. Select the text below and copy it."}catch(x){st.textContent="Couldn’t copy automatically. Select the text below and copy it."}document.body.removeChild(ta)}
+  try{navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(t).then(ok,fb):fb()}catch(x){fb()}
+}
+function ready(form,sumId,submitId,subject,body){
+  var sum=$(sumId),full="To: "+SUPPORT+"\nSubject: "+subject+"\n\n"+body;
+  var mt="mailto:"+SUPPORT+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+  var gm="https://mail.google.com/mail/?view=cm&fs=1&to="+encodeURIComponent(SUPPORT)+"&su="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+  sum.innerHTML='<h3 style="margin:0 0 8px;color:var(--navy)">Final step: send the email</h3>'+
+   '<div class="warn"><strong>Not sent yet.</strong> This website has no email server connected, so your message has not been delivered. It reaches the STUDIVRA support team only when you send the email below.</div>'+
+   '<div class="actions"><a class="btn" href="'+mt+'">Open my email app</a><a class="btn alt" target="_blank" rel="noopener noreferrer" href="'+gm+'">Open Gmail</a><button type="button" class="alt" data-a="copy">Copy details</button><button type="button" class="alt" data-a="edit">Edit details</button></div>'+
+   '<div class="status" role="status"></div><div class="preview"></div>';
+  sum.querySelector(".preview").textContent=full;
+  var st=sum.querySelector(".status");
+  sum.querySelector('[data-a="copy"]').onclick=function(){copyText(full,st)};
+  sum.querySelector('[data-a="edit"]').onclick=function(){
+    Array.prototype.forEach.call(form.elements,function(el){el.disabled=false});sum.classList.remove("show");form.elements[0].focus()};
+  Array.prototype.forEach.call(form.elements,function(el){el.disabled=true});
+  sum.classList.add("show");sum.focus();sum.scrollIntoView({behavior:"smooth",block:"center"});
+}
+
+/* deletion form */
+$("df").addEventListener("submit",function(ev){
+  ev.preventDefault();var ok=true,first=null,em=$("d-email").value.trim(),al=$("d-alt").value.trim();
+  function bad(id,m){setErr(id,m);ok=false;first=first||$(id)}
+  setErr("d-email","");setErr("d-alt","");setErr("d-confirm","");
+  if(!em)bad("d-email","Please enter your Google account email address.");
+  else if(!re.test(em))bad("d-email","This doesn’t look like a valid email address. Example: name@gmail.com");
+  if(al&&!re.test(al))bad("d-alt","The alternative email isn’t valid. Leave it blank or correct it.");
+  if(!$("d-confirm").checked)bad("d-confirm","Please tick the box to confirm you understand.");
+  if(!ok){first.focus();return}
+  var body=["Hello STUDIVRA support,","","I would like to request deletion of my STUDIVRA account and associated personal data.","",
+   "Google account email: "+one(em),"Alternative contact email: "+(one(al)||"Not provided"),"Reason: "+($("d-reason").value||"Not provided"),"",
+   "I understand that account deletion may permanently remove my saved study materials and progress.","","Thank you."].join("\n");
+  ready($("df"),"d-sum","d-submit","STUDIVRA account deletion request",body);
+});
+
+/* contact form */
+$("cf").addEventListener("submit",function(ev){
+  ev.preventDefault();var ok=true,first=null,em=$("c-email").value.trim(),cat=$("c-cat").value,sub=one($("c-sub").value),msg=$("c-msg").value.trim();
+  function bad(id,m){setErr(id,m);ok=false;first=first||$(id)}
+  ["c-email","c-cat","c-sub","c-msg"].forEach(function(i){setErr(i,"")});
+  if(!em)bad("c-email","Please enter your email address so we can reply.");
+  else if(!re.test(em))bad("c-email","This doesn’t look like a valid email address.");
+  if(!cat)bad("c-cat","Please choose an issue category.");
+  if(!sub)bad("c-sub","Please enter a subject.");
+  if(msg.length<10)bad("c-msg","Please describe your issue (at least 10 characters).");
+  if(!ok){first.focus();return}
+  var body=["Name: "+(one($("c-name").value)||"Not provided"),"Reply-to email: "+one(em),"Category: "+cat,"Subject: "+sub,"","Message:",msg].join("\n");
+  ready($("cf"),"c-sum","c-submit","[STUDIVRA Support] "+cat+": "+sub,body);
+});
+})();
+</script>
+</body>
+</html>
